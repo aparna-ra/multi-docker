@@ -5,29 +5,29 @@ services:
   - docker
 
 before_install:
-  - docker build -t aparna7111/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t aparna-ra/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true aparna7111/react-test npm test
+  - docker run -e CI=true aparna-ra/react-test npm test
 
 after_success:
-  - docker build -t aparna7111/multi-client ./client
-  - docker build -t aparna7111/multi-nginx ./nginx
-  - docker build -t aparna7111/multi-server ./server
-  - docker build -t aparna7111/multi-worker ./worker
+  - docker build -t aparna-ra/multi-client ./client
+  - docker build -t aparna-ra/multi-nginx ./nginx
+  - docker build -t aparna-ra/multi-server ./server
+  - docker build -t aparna-ra/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push aparna7111/multi-client
-  - docker push aparna7111/multi-nginx
-  - docker push aparna7111/multi-server
-  - docker push aparna7111/multi-worker
+  - docker push aparna-ra/multi-client
+  - docker push aparna-ra/multi-nginx
+  - docker push aparna-ra/multi-server
+  - docker push aparna-ra/multi-worker
 
     # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push aparna7111/multi-client
-  - docker push aparna7111/multi-nginx
-  - docker push aparna7111/multi-server
-  - docker push aparna7111/multi-worker
+  - docker push aparna-ra/multi-client
+  - docker push aparna-ra/multi-nginx
+  - docker push aparna-ra/multi-server
+  - docker push aparna-ra/multi-worker
 
